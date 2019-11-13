@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="fdb8992a-3f25-454e-bbc9-81e92fa60973" kpf_version="5" name="Passcloud.komodoproject">
+<file id="38cc1cf6-3d51-4e61-8ab4-e712265108d2" idref="fdb8992a-3f25-454e-bbc9-81e92fa60973" name="commands" url="commands">
+</file>
+<file id="7a3602f3-efb0-4c70-a0e0-8a7a9338ca9e" idref="fdb8992a-3f25-454e-bbc9-81e92fa60973" name="test.py" url="test.py">
+</file>
+<file id="9444d103-4f03-4776-aa92-df283c22567c" idref="fdb8992a-3f25-454e-bbc9-81e92fa60973" name="__init__" url="__init__">
+</file>
+<preference-set idref="fdb8992a-3f25-454e-bbc9-81e92fa60973" id="project" preftype="project">
+  <long id="prefs_version">1</long>
+</preference-set>
+</project>
