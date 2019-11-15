@@ -25,11 +25,10 @@ class Mainwin(QMainWindow):
         #Инициализация окон
         self.Formset = Sett()
         #
-        
+        #Центральный виджет интерфейса
         centralWidget = QWidget(self)
         self.setCentralWidget(centralWidget)
         ###Настройки меню
-        #
         exitAction = QAction(QIcon('exit.png'), '&Выход', self)
         exitAction.setShortcut('Ctrl+Q')
         exitAction.setStatusTip('Закрыть приложение.')
@@ -59,7 +58,6 @@ class Mainwin(QMainWindow):
         searthAction.setShortcut('Ctrl+F')
         searthAction.setStatusTip('Открыть окно поиска.')
         #searthAction.triggered.connect(self.)
-        #
         ###Разделение области
         #but = QPushButton('Отправить')
         title1 = QLabel('ФИО')
@@ -78,6 +76,7 @@ class Mainwin(QMainWindow):
         grid = QGridLayout()
         grid.setSpacing(1)
         
+        #Реализация интерфейса окна
         grid.addWidget(title1, 0, 0, alignment=Qt.AlignCenter)
         grid.addWidget(title2, 0, 2, alignment=Qt.AlignCenter)
         grid.addWidget(title3, 0, 4, alignment=Qt.AlignCenter)
@@ -108,7 +107,6 @@ class Mainwin(QMainWindow):
         centralWidget.setLayout(grid)
         self.resize(600, 400)
         self.center()
-        
         self.setWindowTitle('Password cloud')
         self.show()
 
