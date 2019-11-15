@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-import sys
+import sys, qtset
+from qtset import Sett
 from PyQt5.QtWidgets import (QMainWindow, QAction, qApp, QApplication, QLineEdit, QLabel,
                             QDesktopWidget, QWidget, QPushButton, QGridLayout,
                             QTextEdit, QTableView, QTableWidget, QTableWidgetItem)
@@ -21,6 +22,10 @@ class Mainwin(QMainWindow):
 
 
     def initUI(self):
+        #Инициализация окон
+        self.Formset = Sett()
+        #
+        
         centralWidget = QWidget(self)
         self.setCentralWidget(centralWidget)
         ###Настройки меню
@@ -33,6 +38,7 @@ class Mainwin(QMainWindow):
         setAction = QAction('&Настройки', self)
         setAction.setShortcut('Ctrl+,')
         setAction.setStatusTip('Открыть окно настроек.')
+        setAction.triggered.connect(self.setting)
         #
         searthAction = QAction('&Поиск', self)
         searthAction.setShortcut('Ctrl+F')
@@ -92,6 +98,10 @@ class Mainwin(QMainWindow):
         cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
+        
+    def setting(self):
+        self.Formset.show()
+    
 
 
 if __name__ == '__main__':
