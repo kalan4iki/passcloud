@@ -35,14 +35,30 @@ class Mainwin(QMainWindow):
         exitAction.setStatusTip('Закрыть приложение.')
         exitAction.triggered.connect(qApp.quit)
         #
+        addAction = QAction('&Добавить', self)
+        addAction.setShortcut('Ctrl+A')
+        addAction.setStatusTip('Добавить запись.')
+        #addAction.triggered.connect(self.)
+        #
+        conAction = QAction('&Присоединиться', self)
+        #conAction.setShortcut('Ctrl+')
+        conAction.setStatusTip('Присоеденение к базе.')
+        #conAction.triggered.connect(self.)
+        #
         setAction = QAction('&Настройки', self)
         setAction.setShortcut('Ctrl+,')
         setAction.setStatusTip('Открыть окно настроек.')
         setAction.triggered.connect(self.setting)
         #
+        editAction = QAction('&Редактирование', self)
+        editAction.setShortcut('Ctrl+E')
+        editAction.setStatusTip('Открыть окно редактирование записей.')
+        #editAction.triggered.connect(self.)
+        #
         searthAction = QAction('&Поиск', self)
         searthAction.setShortcut('Ctrl+F')
         searthAction.setStatusTip('Открыть окно поиска.')
+        #searthAction.triggered.connect(self.)
         #
         ###Разделение области
         #but = QPushButton('Отправить')
@@ -80,6 +96,10 @@ class Mainwin(QMainWindow):
         self.statusBar()
         menubar = self.menuBar()
         fileMenu = menubar.addMenu('&Файл')
+        file2Menu = menubar.addMenu('&Редактирование')
+        file2Menu.addAction(addAction)
+        file2Menu.addAction(editAction)
+        fileMenu.addAction(conAction)
         fileMenu.addAction(setAction)
         fileMenu.addAction(searthAction)
         fileMenu.addSeparator()
