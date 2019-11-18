@@ -118,6 +118,7 @@ class Mainwin(QMainWindow):
         self.move(qr.topLeft())
         
     def setting(self):
+        self.Formset.setWindowModality(Qt.ApplicationModal) #Чтобы заблокировать основное окно
         self.Formset.show()
     
 
