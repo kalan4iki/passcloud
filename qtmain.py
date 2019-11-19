@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import qtset
+#import qtset
 from passcloud.qtset import Sett
 #from qtset import Sett
 from PyQt5.QtWidgets import (QMainWindow, QAction, qApp, QApplication, QLineEdit, QLabel,
