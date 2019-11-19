@@ -10,7 +10,7 @@ def test_myapp(qtbot):
     
     qtbot.addWidget(window)
     window.show()
-    assert qtbot.waitForWindowShown(window) is True
+    #assert qtbot.waitForWindowShown(window) is True
     sleep(3)
     #qtbot.mouseClick(window.menubar.actions()[0], Qt.LeftButton)
     assert window.title1.text() == 'ФИО'
