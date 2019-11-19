@@ -2,7 +2,7 @@
 import pytest
 from pytestqt import qt_compat
 from pytestqt.qt_compat import qt_api
-from qtmain import Mainwin
+from passcloud.qtmain import Mainwin
 from time import sleep
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import qApp

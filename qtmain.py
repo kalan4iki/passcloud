@@ -3,8 +3,8 @@
 
 import sys
 import qtset
-#from passcloud.qtset import Sett
-from qtset import Sett
+from passcloud.qtset import Sett
+#from qtset import Sett
 from PyQt5.QtWidgets import (QMainWindow, QAction, qApp, QApplication, QLineEdit, QLabel,
                             QDesktopWidget, QWidget, QPushButton, QGridLayout,
                             QTextEdit, QTableView, QTableWidget, QTableWidgetItem)
