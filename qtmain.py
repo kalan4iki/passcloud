@@ -1,16 +1,15 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-import sys, qtset
+import sys
+import qtset
+#from passcloud.qtset import Sett
 from qtset import Sett
 from PyQt5.QtWidgets import (QMainWindow, QAction, qApp, QApplication, QLineEdit, QLabel,
                             QDesktopWidget, QWidget, QPushButton, QGridLayout,
                             QTextEdit, QTableView, QTableWidget, QTableWidgetItem)
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5.QtCore import Qt 
-
-def testselect():
-    print('Test select')
 
 
 class Mainwin(QMainWindow):
@@ -29,57 +28,57 @@ class Mainwin(QMainWindow):
         centralWidget = QWidget(self)
         self.setCentralWidget(centralWidget)
         ###Настройки меню
-        exitAction = QAction(QIcon('exit.png'), '&Выход', self)
-        exitAction.setShortcut('Ctrl+Q')
-        exitAction.setStatusTip('Закрыть приложение.')
-        exitAction.triggered.connect(qApp.quit)
+        self.exitAction = QAction(QIcon('exit.png'), '&Выход', self)
+        self.exitAction.setShortcut('Ctrl+Q')
+        self.exitAction.setStatusTip('Закрыть приложение.')
+        self.exitAction.triggered.connect(qApp.quit)
         #
-        addAction = QAction('&Добавить', self)
-        addAction.setShortcut('Ctrl+A')
-        addAction.setStatusTip('Добавить запись.')
+        self.addAction = QAction('&Добавить', self)
+        self.addAction.setShortcut('Ctrl+A')
+        self.addAction.setStatusTip('Добавить запись.')
         #addAction.triggered.connect(self.)
         #
-        conAction = QAction('&Присоединиться', self)
+        self.conAction = QAction('&Присоединиться', self)
         #conAction.setShortcut('Ctrl+')
-        conAction.setStatusTip('Присоеденение к базе.')
+        self.conAction.setStatusTip('Присоеденение к базе.')
         #conAction.triggered.connect(self.)
         #
-        setAction = QAction('&Настройки', self)
-        setAction.setShortcut('Ctrl+,')
-        setAction.setStatusTip('Открыть окно настроек.')
-        setAction.triggered.connect(self.setting)
+        self.setAction = QAction('&Настройки', self)
+        self.setAction.setShortcut('Ctrl+,')
+        self.setAction.setStatusTip('Открыть окно настроек.')
+        self.setAction.triggered.connect(self.setting)
         #
-        editAction = QAction('&Редактирование', self)
-        editAction.setShortcut('Ctrl+E')
-        editAction.setStatusTip('Открыть окно редактирование записей.')
+        self.editAction = QAction('&Редактирование', self)
+        self.editAction.setShortcut('Ctrl+E')
+        self.editAction.setStatusTip('Открыть окно редактирование записей.')
         #editAction.triggered.connect(self.)
         #
-        searthAction = QAction('&Поиск', self)
-        searthAction.setShortcut('Ctrl+F')
-        searthAction.setStatusTip('Открыть окно поиска.')
+        self.searthAction = QAction('&Поиск', self)
+        self.searthAction.setShortcut('Ctrl+F')
+        self.searthAction.setStatusTip('Открыть окно поиска.')
         #searthAction.triggered.connect(self.)
         ###Разделение области
         #but = QPushButton('Отправить')
-        title1 = QLabel('ФИО')
-        title2 = QLabel('Системы')
-        title3 = QLabel('Учетная запись')
-        block2 = QLineEdit()
-        block2.setAlignment(Qt.AlignTop)
-        tableFIO = QTableWidget(self)
-        tableFIO.setColumnCount(1)
-        tableFIO.setRowCount(1)
+        self.title1 = QLabel('ФИО')
+        self.title2 = QLabel('Системы')
+        self.title3 = QLabel('Учетная запись')
+        self.block2 = QLineEdit()
+        self.block2.setAlignment(Qt.AlignTop)
+        self.tableFIO = QTableWidget(self)
+        self.tableFIO.setColumnCount(1)
+        self.tableFIO.setRowCount(1)
         Itemtablefio = QTableWidgetItem('Test row')
         Itemtablefio.setFlags(Qt.ItemIsSelectable | Qt.ItemIsEnabled)
-        tableFIO.setItem(0, 0, Itemtablefio)
-        tableSYS = QTableWidget()
-        tableFIO.itemSelectionChanged.connect(testselect)
+        self.tableFIO.setItem(0, 0, Itemtablefio)
+        self.tableSYS = QTableWidget()
+        self.tableFIO.itemSelectionChanged.connect(self.testselect)
         grid = QGridLayout()
         grid.setSpacing(1)
         
         #Реализация интерфейса окна
-        grid.addWidget(title1, 0, 0, alignment=Qt.AlignCenter)
-        grid.addWidget(title2, 0, 2, alignment=Qt.AlignCenter)
-        grid.addWidget(title3, 0, 4, alignment=Qt.AlignCenter)
+        grid.addWidget(self.title1, 0, 0, alignment=Qt.AlignCenter)
+        grid.addWidget(self.title2, 0, 2, alignment=Qt.AlignCenter)
+        grid.addWidget(self.title3, 0, 4, alignment=Qt.AlignCenter)
         grid.setColumnMinimumWidth(1, 10)
         grid.setColumnMinimumWidth(3, 10)
         grid.setColumnStretch(0, 2)
@@ -87,22 +86,22 @@ class Mainwin(QMainWindow):
         grid.setColumnStretch(4, 2)
         grid.setRowStretch(0, 1)
         grid.setRowStretch(1, 8)
-        grid.addWidget(tableFIO, 1, 0)
-        grid.addWidget(tableSYS, 1, 2)
-        grid.addWidget(block2, 1, 4, alignment=Qt.AlignTop)
+        grid.addWidget(self.tableFIO, 1, 0)
+        grid.addWidget(self.tableSYS, 1, 2)
+        grid.addWidget(self.block2, 1, 4, alignment=Qt.AlignTop)
         
         ###Реализация статусбара
         self.statusBar()
-        menubar = self.menuBar()
-        fileMenu = menubar.addMenu('&Файл')
-        file2Menu = menubar.addMenu('&Редактирование')
-        file2Menu.addAction(addAction)
-        file2Menu.addAction(editAction)
-        fileMenu.addAction(conAction)
-        fileMenu.addAction(setAction)
-        fileMenu.addAction(searthAction)
+        self.menubar = self.menuBar()
+        fileMenu = self.menubar.addMenu('&Файл')
+        file2Menu = self.menubar.addMenu('&Редактирование')
+        file2Menu.addAction(self.addAction)
+        file2Menu.addAction(self.editAction)
+        fileMenu.addAction(self.conAction)
+        fileMenu.addAction(self.setAction)
+        fileMenu.addAction(self.searthAction)
         fileMenu.addSeparator()
-        fileMenu.addAction(exitAction)
+        fileMenu.addAction(self.exitAction)
         ###
         centralWidget.setLayout(grid)
         self.resize(600, 400)
@@ -120,6 +119,11 @@ class Mainwin(QMainWindow):
     def setting(self):
         self.Formset.setWindowModality(Qt.ApplicationModal) #Чтобы заблокировать основное окно
         self.Formset.show()
+        
+    def testselect(self):
+        a = self.menubar.actions()[0].text()
+        print(a)
+    
     
 
 
@@ -128,3 +132,4 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = Mainwin()
     sys.exit(app.exec_())
+    #print(ex.title1)

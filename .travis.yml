@@ -13,7 +13,7 @@ env:
 install:
   - pip install -q PyQt5
   - pip install -q pyinstaller
-  - pip install -r requirements.txt --use-mirrors
+#  - pip install -r requirements.txt --use-mirrors
 
 # Команда для запуска тестов, в моем случае они запускаются именно так
-script: pyinstaller --onefile qtmain.py
+script: pytest test.py
