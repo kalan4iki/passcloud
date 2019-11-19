@@ -13,10 +13,10 @@ env:
 
 # Команда для установки зависимостей в окружение (при этом доступны переменные из секции "env")
 install:
-  - pip install -q PyQt5
-  - pip install -q pytest
-  - pip install -q pytest-qt
+#  - pip install -q PyQt5
+#  - pip install -q pytest
+#  - pip install -q pytest-qt
 #  - pip install -r requirements.txt --use-mirrors
 
 # Команда для запуска тестов, в моем случае они запускаются именно так
-script: pytest test.py
+script: python -m pytest test.py
