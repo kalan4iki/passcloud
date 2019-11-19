@@ -19,29 +19,29 @@ class Sett(QWidget):
         grid = QGridLayout()
         grid.setSpacing(1)
         #Lineedit
-        set1 = QLineEdit()
-        set2 = QLineEdit()
-        set3 = QLineEdit()
+        self.set1 = QLineEdit()
+        self.set2 = QLineEdit()
+        self.set3 = QLineEdit()
         #Label
-        labl1 = QLabel('Setting 1')
-        labl2 = QLabel('Setting 2')
-        labl3 = QLabel('Setting 3')
+        self.labl1 = QLabel('Setting 1')
+        self.labl2 = QLabel('Setting 2')
+        self.labl3 = QLabel('Setting 3')
         #Button
-        butt1 = QPushButton("&Сохранить")
-        butt2 = QPushButton("Выйти")
-        butt2.clicked.connect(self.he)
+        self.butt1 = QPushButton("&Сохранить")
+        self.butt2 = QPushButton("Выйти")
+        self.butt2.clicked.connect(self.he)
         #
         #Добавление интерфейса в настройки
-        grid.addWidget(labl1, 0, 0)
-        grid.addWidget(labl2, 1, 0)
-        grid.addWidget(labl3, 2, 0)
+        grid.addWidget(self.labl1, 0, 0)
+        grid.addWidget(self.labl2, 1, 0)
+        grid.addWidget(self.labl3, 2, 0)
         
-        grid.addWidget(set1, 0, 1)
-        grid.addWidget(set2, 1, 1)
-        grid.addWidget(set3, 2, 1)
+        grid.addWidget(self.set1, 0, 1)
+        grid.addWidget(self.set2, 1, 1)
+        grid.addWidget(self.set3, 2, 1)
         
-        grid.addWidget(butt1, 3, 0)
-        grid.addWidget(butt2, 3, 1)
+        grid.addWidget(self.butt1, 3, 0)
+        grid.addWidget(self.butt2, 3, 1)
         #
         self.setLayout(grid)
         #self.resize(600, 400)
