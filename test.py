@@ -1,7 +1,5 @@
 #from qtmain import Mainwin
 import pytest
-from pytestqt import qt_compat
-from pytestqt.qt_compat import qt_api
 from passcloud.qtmain import Mainwin
 from time import sleep
 from PyQt5.QtCore import *
