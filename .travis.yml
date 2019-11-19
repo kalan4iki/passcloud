@@ -11,7 +11,7 @@ env:
 
 # Команда для установки зависимостей в окружение (при этом доступны переменные из секции "env")
 install:
-  - pip install -q PyQt==$PyQt5_VERSION
+  - pip install -q PyQt5==$PyQt5_VERSION
   - pip install -r requirements.txt --use-mirrors
 
 # Команда для запуска тестов, в моем случае они запускаются именно так
