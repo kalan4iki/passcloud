@@ -8,11 +8,14 @@ python:
 # Параметры окружения
 env:
   - PyQt5=12.7.0
+  - pytest
+  - pytest-qt
 
 # Команда для установки зависимостей в окружение (при этом доступны переменные из секции "env")
 install:
   - pip install -q PyQt5
-  - pip install -q pyinstaller
+  - pip install -q pytest
+  - pip install -q pytest-qt
 #  - pip install -r requirements.txt --use-mirrors
 
 # Команда для запуска тестов, в моем случае они запускаются именно так
