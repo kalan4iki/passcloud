@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from forms import qtset, qtsea
+from forms import qtset, qtsea, qtadd
 from PyQt5.QtWidgets import (QMainWindow, QAction, qApp, QApplication, QLineEdit, QLabel,
                             QDesktopWidget, QWidget, QPushButton, QGridLayout,
                             QTextEdit, QTableView, QTableWidget, QTableWidgetItem)
@@ -22,6 +22,7 @@ class Mainwin(QMainWindow):
         #Инициализация окон
         self.Formset = qtset.Sett()
         self.Formsea = qtsea.Search()
+        self.Formadd = qtadd.Adds()
         #
         #Центральный виджет интерфейса
         centralWidget = QWidget(self)
@@ -35,7 +36,7 @@ class Mainwin(QMainWindow):
         self.addAction = QAction('&Добавить', self)
         self.addAction.setShortcut('Ctrl+A')
         self.addAction.setStatusTip('Добавить запись.')
-        #addAction.triggered.connect(self.)
+        self.addAction.triggered.connect(self.Addform)
         #
         self.conAction = QAction('&Присоединиться', self)
         #conAction.setShortcut('Ctrl+')
@@ -121,7 +122,10 @@ class Mainwin(QMainWindow):
     def Searchform(self):
         self.Formsea.setWindowModality(Qt.ApplicationModal)
         self.Formsea.show()
-    
+    def Addform(self):
+        self.Formadd.setWindowModality(Qt.ApplicationModal)
+        self.Formadd.show()
+        
         
     def testselect(self):
         a = self.menubar.actions()[0].text()
