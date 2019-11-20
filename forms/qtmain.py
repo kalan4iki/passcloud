@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from forms.qtset import Sett
+from forms import qtset, qtsea, qtadd, qtedit
 from PyQt5.QtWidgets import (QMainWindow, QAction, qApp, QApplication, QLineEdit, QLabel,
                             QDesktopWidget, QWidget, QPushButton, QGridLayout,
                             QTextEdit, QTableView, QTableWidget, QTableWidgetItem)
@@ -20,7 +20,10 @@ class Mainwin(QMainWindow):
 
     def initUI(self):
         #Инициализация окон
-        self.Formset = Sett()
+        self.Formset = qtset.Sett()
+        self.Formsea = qtsea.Search()
+        self.Formadd = qtadd.Adds()
+        self.Formedit = qtedit.Edits()
         #
         #Центральный виджет интерфейса
         centralWidget = QWidget(self)
@@ -34,7 +37,7 @@ class Mainwin(QMainWindow):
         self.addAction = QAction('&Добавить', self)
         self.addAction.setShortcut('Ctrl+A')
         self.addAction.setStatusTip('Добавить запись.')
-        #addAction.triggered.connect(self.)
+        self.addAction.triggered.connect(self.Addform)
         #
         self.conAction = QAction('&Присоединиться', self)
         #conAction.setShortcut('Ctrl+')
@@ -49,12 +52,12 @@ class Mainwin(QMainWindow):
         self.editAction = QAction('&Редактирование', self)
         self.editAction.setShortcut('Ctrl+E')
         self.editAction.setStatusTip('Открыть окно редактирование записей.')
-        #editAction.triggered.connect(self.)
+        self.editAction.triggered.connect(self.Editform)
         #
         self.searthAction = QAction('&Поиск', self)
         self.searthAction.setShortcut('Ctrl+F')
         self.searthAction.setStatusTip('Открыть окно поиска.')
-        #searthAction.triggered.connect(self.)
+        self.searthAction.triggered.connect(self.Searchform)
         ###Разделение области
         #but = QPushButton('Отправить')
         self.title1 = QLabel('ФИО')
@@ -117,6 +120,15 @@ class Mainwin(QMainWindow):
     def setting(self):
         self.Formset.setWindowModality(Qt.ApplicationModal) #Чтобы заблокировать основное окно
         self.Formset.show()
+    def Searchform(self):
+        self.Formsea.setWindowModality(Qt.ApplicationModal)
+        self.Formsea.show()
+    def Addform(self):
+        self.Formadd.setWindowModality(Qt.ApplicationModal)
+        self.Formadd.show()
+    def Editform(self):
+        self.Formedit.setWindowModality(Qt.ApplicationModal)
+        self.Formedit.show()
         
     def testselect(self):
         a = self.menubar.actions()[0].text()

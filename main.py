@@ -1,5 +1,5 @@
 import sys
-from forms import qtmain, qtset
+from forms import qtmain
 from PyQt5.QtWidgets import QApplication
 
 if __name__ == '__main__':
