@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from forms.qtset import Sett
+from forms import qtset, qtsea
 from PyQt5.QtWidgets import (QMainWindow, QAction, qApp, QApplication, QLineEdit, QLabel,
                             QDesktopWidget, QWidget, QPushButton, QGridLayout,
                             QTextEdit, QTableView, QTableWidget, QTableWidgetItem)
@@ -20,7 +20,8 @@ class Mainwin(QMainWindow):
 
     def initUI(self):
         #Инициализация окон
-        self.Formset = Sett()
+        self.Formset = qtset.Sett()
+        self.Formsea = qtsea.Search()
         #
         #Центральный виджет интерфейса
         centralWidget = QWidget(self)
@@ -54,7 +55,7 @@ class Mainwin(QMainWindow):
         self.searthAction = QAction('&Поиск', self)
         self.searthAction.setShortcut('Ctrl+F')
         self.searthAction.setStatusTip('Открыть окно поиска.')
-        #searthAction.triggered.connect(self.)
+        self.searthAction.triggered.connect(self.Searchform)
         ###Разделение области
         #but = QPushButton('Отправить')
         self.title1 = QLabel('ФИО')
@@ -117,6 +118,10 @@ class Mainwin(QMainWindow):
     def setting(self):
         self.Formset.setWindowModality(Qt.ApplicationModal) #Чтобы заблокировать основное окно
         self.Formset.show()
+    def Searchform(self):
+        self.Formsea.setWindowModality(Qt.ApplicationModal)
+        self.Formsea.show()
+    
         
     def testselect(self):
         a = self.menubar.actions()[0].text()
