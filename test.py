@@ -2,7 +2,7 @@
 import pytest
 from pytestqt import qt_compat
 from pytestqt.qt_compat import qt_api
-from forms import qtset, qtmain, qtsea, qtadd
+from forms import qtset, qtmain, qtsea, qtadd, qtedit
 from time import sleep
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import qApp
@@ -43,4 +43,14 @@ def test_addform(qtbot):
     assert qtbot.waitForWindowShown(window) is True
     sleep(3)
     assert window.labl1.text() == 'ФИО'
+    
+def test_edit():
+    window = qtedit.Edits()
+    
+    qtbot.addWidget(window)
+    window.show()
+    assert qtbot.waitForWindowShown(window) is True
+    sleep(3)
+    assert window.labl1.text() == 'ФИО'
+
     
