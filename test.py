@@ -2,14 +2,13 @@
 import pytest
 from pytestqt import qt_compat
 from pytestqt.qt_compat import qt_api
-from passcloud.qtset import Sett
-from passcloud.qtmain import Mainwin
+from forms import qtset, qtmain
 from time import sleep
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import qApp
 
 def test_mainform(qtbot):
-    window = Mainwin()
+    window = qtmain.Mainwin()
     
     qtbot.addWidget(window)
     window.show()
@@ -20,7 +19,7 @@ def test_mainform(qtbot):
     assert window.menubar.actions()[0].text() == '&Файл'
 
 def test_setform(qtbot):
-    window = Sett()
+    window = qtset.Sett()
     
     qtbot.addWidget(window)
     window.show()

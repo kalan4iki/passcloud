@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-#import qtset
-from passcloud.qtset import Sett
-#from qtset import Sett
+from forms.qtset import Sett
 from PyQt5.QtWidgets import (QMainWindow, QAction, qApp, QApplication, QLineEdit, QLabel,
                             QDesktopWidget, QWidget, QPushButton, QGridLayout,
                             QTextEdit, QTableView, QTableWidget, QTableWidgetItem)
@@ -123,13 +121,5 @@ class Mainwin(QMainWindow):
     def testselect(self):
         a = self.menubar.actions()[0].text()
         print(a)
-    
-    
 
-
-if __name__ == '__main__':
-
-    app = QApplication(sys.argv)
-    ex = Mainwin()
-    sys.exit(app.exec_())
     #print(ex.title1)
