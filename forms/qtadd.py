@@ -13,7 +13,6 @@ class Adds(QWidget):
         super().__init__()
         self.initUI()
 
-
     def initUI(self):
         #Создание области
         grid = QGridLayout()
@@ -38,21 +37,16 @@ class Adds(QWidget):
         grid.addWidget(self.labl2, 1, 0)
         grid.addWidget(self.labl3, 2, 0)
         grid.addWidget(self.labl4, 3, 0)
-        
         grid.addWidget(self.set1, 0, 1)
         grid.addWidget(self.set2, 1, 1)
         grid.addWidget(self.set3, 2, 1)
         grid.addWidget(self.set4, 3, 1)
-        
         grid.addWidget(self.butt1, 4, 0)
         grid.addWidget(self.butt2, 4, 1)
         #
         self.setLayout(grid)
-        #self.resize(600, 400)
-        self.center()
-        
+        self.center()    
         self.setWindowTitle('Поиск')
-        #self.show()
         
     def he(self):
         self.hide()
@@ -62,11 +56,4 @@ class Adds(QWidget):
         cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
-
-if __name__ == '__main__':
-
-    app = QApplication(sys.argv)
-    ex = Adds()
-    sys.exit(app.exec_())
-    
     

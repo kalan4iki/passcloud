@@ -13,7 +13,6 @@ class Search(QWidget):
         super().__init__()
         self.initUI()
 
-
     def initUI(self):
         #Создание области
         grid = QGridLayout()
@@ -29,18 +28,13 @@ class Search(QWidget):
         #
         #Добавление интерфейса в настройки
         grid.addWidget(self.labl1, 0, 0)
-        
         grid.addWidget(self.set1, 0, 1)
-        
         grid.addWidget(self.butt1, 3, 0)
         grid.addWidget(self.butt2, 3, 1)
         #
         self.setLayout(grid)
-        #self.resize(600, 400)
         self.center()
-        
         self.setWindowTitle('Поиск')
-        #self.show()
         
     def he(self):
         self.hide()
@@ -50,11 +44,3 @@ class Search(QWidget):
         cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
-
-if __name__ == '__main__':
-
-    app = QApplication(sys.argv)
-    ex = Search()
-    sys.exit(app.exec_())
-    
-    

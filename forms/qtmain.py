@@ -14,52 +14,20 @@ class Mainwin(QMainWindow):
 
     def __init__(self):
         super().__init__()
-
-        self.initUI()
-
+        self.crewidg() #Реализация интерфейса
+        self.cremenubar() #Создание менюбара
+        self.initUI() #Дополнительные настройки окна
 
     def initUI(self):
-        #Инициализация окон
-        self.Formset = qtset.Sett()
-        self.Formsea = qtsea.Search()
-        self.Formadd = qtadd.Adds()
-        self.Formedit = qtedit.Edits()
-        #
-        #Центральный виджет интерфейса
-        centralWidget = QWidget(self)
-        self.setCentralWidget(centralWidget)
-        ###Настройки меню
-        self.exitAction = QAction(QIcon('exit.png'), '&Выход', self)
-        self.exitAction.setShortcut('Ctrl+Q')
-        self.exitAction.setStatusTip('Закрыть приложение.')
-        self.exitAction.triggered.connect(qApp.quit)
-        #
-        self.addAction = QAction('&Добавить', self)
-        self.addAction.setShortcut('Ctrl+A')
-        self.addAction.setStatusTip('Добавить запись.')
-        self.addAction.triggered.connect(self.Addform)
-        #
-        self.conAction = QAction('&Присоединиться', self)
-        #conAction.setShortcut('Ctrl+')
-        self.conAction.setStatusTip('Присоеденение к базе.')
-        #conAction.triggered.connect(self.)
-        #
-        self.setAction = QAction('&Настройки', self)
-        self.setAction.setShortcut('Ctrl+,')
-        self.setAction.setStatusTip('Открыть окно настроек.')
-        self.setAction.triggered.connect(self.setting)
-        #
-        self.editAction = QAction('&Редактирование', self)
-        self.editAction.setShortcut('Ctrl+E')
-        self.editAction.setStatusTip('Открыть окно редактирование записей.')
-        self.editAction.triggered.connect(self.Editform)
-        #
-        self.searthAction = QAction('&Поиск', self)
-        self.searthAction.setShortcut('Ctrl+F')
-        self.searthAction.setStatusTip('Открыть окно поиска.')
-        self.searthAction.triggered.connect(self.Searchform)
-        ###Разделение области
-        #but = QPushButton('Отправить')
+        ###Дополнительные настройки главного окна
+        self.resize(600, 400)
+        self.center()
+        self.setWindowTitle('Password cloud')
+        self.show()
+        
+    def crewidg(self):
+        self.centralWidget = QWidget(self)
+        self.setCentralWidget(self.centralWidget)
         self.title1 = QLabel('ФИО')
         self.title2 = QLabel('Системы')
         self.title3 = QLabel('Учетная запись')
@@ -73,10 +41,9 @@ class Mainwin(QMainWindow):
         self.tableFIO.setItem(0, 0, Itemtablefio)
         self.tableSYS = QTableWidget()
         self.tableFIO.itemSelectionChanged.connect(self.testselect)
+        #
         grid = QGridLayout()
         grid.setSpacing(1)
-        
-        #Реализация интерфейса окна
         grid.addWidget(self.title1, 0, 0, alignment=Qt.AlignCenter)
         grid.addWidget(self.title2, 0, 2, alignment=Qt.AlignCenter)
         grid.addWidget(self.title3, 0, 4, alignment=Qt.AlignCenter)
@@ -90,8 +57,34 @@ class Mainwin(QMainWindow):
         grid.addWidget(self.tableFIO, 1, 0)
         grid.addWidget(self.tableSYS, 1, 2)
         grid.addWidget(self.block2, 1, 4, alignment=Qt.AlignTop)
+        self.centralWidget.setLayout(grid)
+    
         
-        ###Реализация статусбара
+    def cremenubar(self):
+        self.exitAction = QAction(QIcon('exit.png'), '&Выход', self)
+        self.exitAction.setShortcut('Ctrl+Q')
+        self.exitAction.setStatusTip('Закрыть приложение.')
+        self.exitAction.triggered.connect(qApp.quit)
+        self.addAction = QAction('&Добавить', self)
+        self.addAction.setShortcut('Ctrl+A')
+        self.addAction.setStatusTip('Добавить запись.')
+        self.addAction.triggered.connect(self.Addform)
+        self.conAction = QAction('&Присоединиться', self)
+        #conAction.setShortcut('Ctrl+')
+        self.conAction.setStatusTip('Присоеденение к базе.')
+        #conAction.triggered.connect(self.)
+        self.setAction = QAction('&Настройки', self)
+        self.setAction.setShortcut('Ctrl+,')
+        self.setAction.setStatusTip('Открыть окно настроек.')
+        self.setAction.triggered.connect(self.setting)
+        self.editAction = QAction('&Редактирование', self)
+        self.editAction.setShortcut('Ctrl+E')
+        self.editAction.setStatusTip('Открыть окно редактирование записей.')
+        self.editAction.triggered.connect(self.Editform)
+        self.searthAction = QAction('&Поиск', self)
+        self.searthAction.setShortcut('Ctrl+F')
+        self.searthAction.setStatusTip('Открыть окно поиска.')
+        self.searthAction.triggered.connect(self.Searchform)
         self.statusBar()
         self.menubar = self.menuBar()
         fileMenu = self.menubar.addMenu('&Файл')
@@ -103,14 +96,7 @@ class Mainwin(QMainWindow):
         fileMenu.addAction(self.searthAction)
         fileMenu.addSeparator()
         fileMenu.addAction(self.exitAction)
-        ###
-        centralWidget.setLayout(grid)
-        self.resize(600, 400)
-        self.center()
-        self.setWindowTitle('Password cloud')
-        self.show()
-
-
+    
     def center(self):
         qr = self.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()
@@ -118,20 +104,22 @@ class Mainwin(QMainWindow):
         self.move(qr.topLeft())
         
     def setting(self):
+        self.Formset = qtset.Sett()
         self.Formset.setWindowModality(Qt.ApplicationModal) #Чтобы заблокировать основное окно
         self.Formset.show()
     def Searchform(self):
+        self.Formsea = qtsea.Search()
         self.Formsea.setWindowModality(Qt.ApplicationModal)
         self.Formsea.show()
     def Addform(self):
+        self.Formadd = qtadd.Adds()
         self.Formadd.setWindowModality(Qt.ApplicationModal)
         self.Formadd.show()
     def Editform(self):
+        self.Formedit = qtedit.Edits()
         self.Formedit.setWindowModality(Qt.ApplicationModal)
         self.Formedit.show()
         
     def testselect(self):
         a = self.menubar.actions()[0].text()
         print(a)
-
-    #print(ex.title1)

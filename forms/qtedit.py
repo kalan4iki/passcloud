@@ -13,7 +13,6 @@ class Edits(QWidget):
         super().__init__()
         self.initUI()
 
-
     def initUI(self):
         #Создание области
         grid = QGridLayout()
@@ -42,22 +41,17 @@ class Edits(QWidget):
         grid.addWidget(self.labl2, 2, 0)
         grid.addWidget(self.labl3, 3, 0)
         grid.addWidget(self.labl4, 4, 0)
-        
         grid.addWidget(self.set01, 0, 1)
         grid.addWidget(self.set1, 1, 1)
         grid.addWidget(self.set2, 2, 1)
         grid.addWidget(self.set3, 3, 1)
         grid.addWidget(self.set4, 4, 1)
-        
         grid.addWidget(self.butt1, 5, 0)
         grid.addWidget(self.butt2, 5, 1)
         #
         self.setLayout(grid)
-        #self.resize(600, 400)
         self.center()
-        
         self.setWindowTitle('Изменение')
-        #self.show()
         
     def he(self):
         self.hide()
@@ -67,11 +61,4 @@ class Edits(QWidget):
         cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
-
-if __name__ == '__main__':
-
-    app = QApplication(sys.argv)
-    ex = Edits()
-    sys.exit(app.exec_())
-    
     
