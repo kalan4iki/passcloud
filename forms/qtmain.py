@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from forms import qtset, qtsea, qtadd
+from forms import qtset, qtsea, qtadd, qtedit
 from PyQt5.QtWidgets import (QMainWindow, QAction, qApp, QApplication, QLineEdit, QLabel,
                             QDesktopWidget, QWidget, QPushButton, QGridLayout,
                             QTextEdit, QTableView, QTableWidget, QTableWidgetItem)
@@ -23,6 +23,7 @@ class Mainwin(QMainWindow):
         self.Formset = qtset.Sett()
         self.Formsea = qtsea.Search()
         self.Formadd = qtadd.Adds()
+        self.Formedit = qtedit.Edits()
         #
         #Центральный виджет интерфейса
         centralWidget = QWidget(self)
@@ -51,7 +52,7 @@ class Mainwin(QMainWindow):
         self.editAction = QAction('&Редактирование', self)
         self.editAction.setShortcut('Ctrl+E')
         self.editAction.setStatusTip('Открыть окно редактирование записей.')
-        #editAction.triggered.connect(self.)
+        self.editAction.triggered.connect(self.Editform)
         #
         self.searthAction = QAction('&Поиск', self)
         self.searthAction.setShortcut('Ctrl+F')
@@ -125,7 +126,9 @@ class Mainwin(QMainWindow):
     def Addform(self):
         self.Formadd.setWindowModality(Qt.ApplicationModal)
         self.Formadd.show()
-        
+    def Editform(self):
+        self.Formedit.setWindowModality(Qt.ApplicationModal)
+        self.Formedit.show()
         
     def testselect(self):
         a = self.menubar.actions()[0].text()

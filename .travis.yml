@@ -20,10 +20,10 @@ env:
 install:
   - "export DISPLAY=:99.0"
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1920x1200x24 -ac +extension GLX +render -noreset"
-  - pip install -q PyQt5
-  - pip install -q pytest
-  - pip install -q pytest-qt
-#  - pip install -r requirements.txt --use-mirrors
+#  - pip install -q PyQt5
+#  - pip install -q pytest
+#  - pip install -q pytest-qt
+  - pip install -r requirements.txt --use-mirrors
 
 # Команда для запуска тестов, в моем случае они запускаются именно так
 script: py.test test.py
