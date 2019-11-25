@@ -44,6 +44,7 @@ def test_addform(qtbot):
     sleep(3)
     assert window.labl1.text() == 'ФИО'
     
+    
 def test_edit(qtbot):
     window = qtedit.Edits()
     
